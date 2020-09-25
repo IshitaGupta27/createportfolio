@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+	<style>
+		body{
+			text-align: center;
+			background-color: powderblue;
+			margin-top: 80px;
+		}
+	</style>
+</head>
+<body>
+	<b><i><h1>Portfolio Form</h1></i></b>
+	<br><br>
+	<aside style="background-color:gray;width:70%;height:700px;margin-left:230px;">
+	<form method="POST" action="Webpage.php" enctype="multipart/form-data">
+		<br><br>
+		<b> Full Name: </b><input type="text" name="name" id="name" size="30" placeholder="Enter your name" required><br><br><br>
+		<label for="img"><b>Select image: </b></label>
+  		<input type="file" id="image" name="image" accept="image/*"><br><br><br>
+		<b> Age: </b><input type="text" name="age" id="age" placeholder="Your age" ><br><br><br>
+		<b> Status: </b><input type="text" name="status" id="status" placeholder="Eg: student,employed"><br><br><br>
+		<b> Educational Qualifications: </b><input type="text" size="50" name="current" id="current" placeholder="Eg: MCA(IGDTUW), Bsc(H) Computer Science (DU)"><br><br><br>
+		<b> Hobbies: </b><input type="text" name="hobbies" id="hobbies" placeholder="Eg: Dancing,painting,etc." size="30"><br><br><br>
+		<b> About you: </b><input type="text" name="about" id="about" placeholder="Few words about you(apart from degrees mentioned above), your areas of interests, experience if any" size="100"><br><br><br>
+		<b> Email id: </b><input type="Email" name="email" id="email" size="30" placeholder="abc@example.com"><br><br><br>
+		<b> Contact no: </b><input type="number" name="phone" id="phone" size="30" placeholder="9876543210"><br><br><br>
+		<input type="SUBMIT" name="SUBMIT" style="background-color:pink;border-width:20px;" onclick="return check()">
+	</form>
+	</aside>
+	<script language="Javascript">
+		function check()
+		{
+			var fname = document.getElementById("name").value;
+			var age = document.getElementById("age").value;
+			var stats = document.getElementById("status").value;
+			var edqual = document.getElementById("current").value;
+			var hbbies = document.getElementById("hobbies").value;
+			var abt = document.getElementById("about").value;
+			var id = document.getElementById("email").value;
+			var no = document.getElementById("phone").value;
+
+			var tes = /[0-9]/g;
+			var fnametest= tes.test(fname,stats,edqual,hbbies,abt);
+			var agetest= tes.test(age);
+			var fileName = document.querySelector('#file1').value; 
+            var extension = toLowerCase(fileName.split('.').pop());
+			
+			if(fname==="" || age==="" || stats==="" || edqual==="" || hbbies==="" || abt==="" || id==="" || no==="")
+			{
+				alert("No field should be left empty. ");
+				return false;
+			}
+			if(fnametest==true)
+			{
+				alert("Please enter a valid string. ");
+				return false;
+			}
+			if(agetest==false)
+			{
+				alert("Please enter a valid age. ");
+				return false;
+			}
+			if(extension!=".jpg" || extension!=".jpeg" || extension!=".png")
+			{
+				alert("File format not supported. ");
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+	</script>
+</body>
+</html>
